@@ -143,19 +143,20 @@ print("children list", children_list)
 max_and_average_scores(children_list)
 children_per_gen = 60
 
-gen1 = mutation(children_list, 2, children_per_gen)
-max_and_average_scores(gen1)
-gen2 = mutation(gen1, 2, children_per_gen)
-max_and_average_scores(gen2)
-gen3 = mutation(gen2, 2, children_per_gen)
-max_and_average_scores(gen3)
-gen4 = mutation(gen3, 2, children_per_gen)
-max_and_average_scores(gen4)
-gen5 = mutation(gen4, 2, children_per_gen)
-max_and_average_scores(gen5)
+# Initialize an empty list to store all generations
+all_gens = []
 
+# Perform the iterations
+for i in range(1, 31):
+    # Generate a new generation and calculate its scores
+    new_gen = mutation(all_gens[-1] if all_gens else children_list, 2, children_per_gen)
+    max_avg_scores = max_and_average_scores(new_gen)
 
-ypoints = np.array([max_score(children_list), max_score(gen1), max_score(gen2), max_score(gen3), max_score(gen4), max_score(gen5)])
+    # Store the generation
+    all_gens.append(new_gen)
+
+# Calculate ypoints
+ypoints = np.array([max_score(gen) for gen in [children_list] + all_gens])
 
 plt.plot(ypoints, marker='o')
 plt.show()

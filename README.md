@@ -28,14 +28,21 @@ Description of results:
 
 Sources: N/A
 
+Information on 1.1 running: Please look at 1.1.png.
+
+Information on 1.2 running: Please look at 1.2.png.
+
+Information on 1.3 running: Please look at 1.3.png.
 2 B
 
 Representation of Solutions:
-The solutions are represented as lists of integers, where each integer represents a bin number. The length of the list corresponds to the number of items, and each item's bin assignment is determined by its corresponding integer in the list.
+The solutions are represented as lists of integers, where each integer represents a bin number. The length of the list corresponds to the number of items, and each item's bin assignment is determined by its corresponding integer in the list. The bin list corresponds to the weight list.
 
 Fitness Function and Operators:
-Fitness Function: The fitness function (fitness_fun) evaluates a solution's fitness based on the count of specific values in the list of integers representing bin assignments. It aims to find solutions where each bin contains exactly three items, corresponding to a balanced bin packing.
+Fitness Function: The fitness function (fitness_fun) evaluates a solution's fitness based on the count of specific values in the list of integers representing bin assignments. It aims to find solutions where each bin contains items where their total weight doesn't exceed 1000, corresponding to a balanced bin packing.
 Operators: The main operator used in the code is the mutation operator (mutate_list), which randomly changes the bin assignment of each item within a solution. This operator introduces diversity into the population of solutions and allows exploration of different bin configurations.
 
 Insights into the Problem Landscape:
 The problem landscape is characterized by discrete and combinatorial nature due to the bin packing problem. Each solution represents a specific arrangement of items into bins, and the fitness landscape is likely rugged with numerous local optima. The fitness landscape favors solutions where items are evenly distributed among the bins, balancing the load across bins to achieve an optimal bin packing configuration. The challenge lies in efficiently exploring this landscape to find solutions that satisfy the bin packing constraints.
+
+Information on 2B running: Please look at 2B.png

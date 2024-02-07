@@ -24,7 +24,9 @@ Other operations:
 
 Plots: 
 Plot showing the max fitness to the generation number using matplotlib.
+
 Description of results:
+look at graphs for 1.1A.png, 1.2A.png and 1.3A.png. Looking at them graphs we can see our results reach the optimal solution getting up to 30 in 1.1, and 29 on 1.2 and 1.3
 
 Sources: N/A
 

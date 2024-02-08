@@ -4,7 +4,7 @@ import numpy as np
 
 weights = [200, 200, 200, 199, 198, 198, 197, 197, 194, 194, 193, 192, 191, 191, 191, 190, 190, 189, 188, 188, 187, 187, 186, 185, 185, 185, 185, 184, 184, 184, 183, 183, 183, 182, 182, 182, 181, 181, 180, 179, 179, 179, 179, 178, 177, 177, 177, 177, 175, 174, 173, 173, 172, 171, 171, 171, 170, 170, 169, 169, 169, 167, 167, 165, 165, 164, 163, 163, 163, 163, 162, 161, 160, 160, 159, 158, 158, 158, 157, 156, 156, 156, 156, 156, 156, 155, 155, 155, 154, 154, 153, 152, 152, 152, 151, 151, 150, 150, 150, 150]
 children_list = []
-bin_num = 18
+bin_num = 100
 bin_size = 1000
 
 
@@ -101,6 +101,7 @@ def mutation(parent_list, top_num_parents, child_return_num):
         child_dict = {'genes': new_gen_child, 'fitness': fitness_rank_child}
         new_gen_children_list.append(child_dict)
     sorted_children = sorted(new_gen_children_list, key=lambda x: x['fitness'], reverse=False)
+    # elitism impl
     for unfit_child in range(0, top_num_parents):
         sorted_children[unfit_child] = sorted_parents[unfit_child]
     return sorted_children
@@ -111,16 +112,20 @@ def random_binary_list(length):
 
 
 def fitness_fun(child_list):
-    lenchildlist = len(child_list)
-    lenweightslist = len(weights)
+    # lenchildlist = len(child_list)
+    # lenweightslist = len(weights)
     count = {}
     for num in range(0, len(child_list)):
         count[child_list[num]] = count.get(child_list[num], 0) + weights[num]
     fitness_num = 0
     # Check if all values occurred exactly 3 times
-    for num in range(1, 11):
+    for num in count:
+        v = count.get(num, 0)
+        wasted_weight = ((bin_size-count.get(num, 0))/bin_size)
         if count.get(num, 0) < bin_size:
-            fitness_num = fitness_num+1
+            fitness_num = fitness_num+1-wasted_weight
+        else:
+            fitness_num = fitness_num - wasted_weight
     return fitness_num
 
 
@@ -139,7 +144,7 @@ for i in range(10):
 print(len(children_list))
 print("children list", children_list)
 max_and_average_scores(children_list)
-children_per_gen = 30
+children_per_gen = 200
 
 # Initialize an empty list to store all generations
 all_gens = []

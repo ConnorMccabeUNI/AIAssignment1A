@@ -7,20 +7,22 @@ Our Code Structure:
 Imports and global variables at the top. Function to get max and average scores used for displaying results. Mutate list function which randomly changes 1 of the alels. Divide list into sections function which divides the genes into sections depending on a function of number of parents and children. Function mutation which is the main function that covers crossover and calls the sub functions. Random binary list function which makes a random parent within a certain range. Function for fitness, depending on the version the function changes, to define the fitness of each genome max score function which gets the max score of a generation. Then we have our code for each generation and after that we are plotting out the results.
 
 Representations:
-Plot showing the max fitness to the generation number.
+The representation involves generating a plot that illustrates the maximum fitness achieved against the generation number. This graphical representation provides valuable insights into the progression of fitness levels across successive generations during the evolutionary process.
 
 Fitness function:
-Based on the version running a fitness function is ran returning the fitness of the genotype. 
+The fitness function is integral to the algorithm, as it determines the fitness of each genotype within the population. The specific version of the algorithm dictates the nature of this function, which is executed to evaluate the fitness of the genotype based on predefined criteria or objectives.
 
 Selection:
-Based on the top N parents.
+Based on the top N parents. Selection involves identifying the top N parents from the current population based on their fitness scores. These parents are chosen as candidates for reproduction and contribute to the next generation's genetic makeup.
 
 Crossover:
-After separating the genotype for all the parents, we equally swap the sections over randomly until the number of children is satisfied. In the mutation function.
+After separating the genotype for all the parents, we equally swap the sections over randomly until the number of children is satisfied. In the mutation function. In other words, during the crossover process, the genotypes of selected parents are divided into sections, and these sections are randomly exchanged among parent genotypes to generate offspring. This process ensures genetic diversity among the offspring while maintaining certain characteristics inherited from the parents.
 
 Mutation:
 Part of the mutation function where it calls the mutation list function for half of the new generation where it randomly swaps a binary number.
+
 Other operations:
+
 
 Plots: 
 Plot showing the max fitness to the generation number using matplotlib.
